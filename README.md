@@ -134,12 +134,10 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
     ここまで終わったらSSBasketフォルダに移動して実行をします。
-    
     ```
     $ cd ~/SSBasket/ssb_query
     $ ssb -f test.ssb
     ```
-    
     このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
 
     - -v, --version, -version: バージョン表示
