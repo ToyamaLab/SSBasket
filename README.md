@@ -124,6 +124,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     sqlite_db=<SQLiteのdb_name>
     sparql_endpoint=<sparqlendpoint>
     ```
+    
     `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
 
 　　 [SPARQLエンドポイント][3]はデフォルトで[DBPedia Japanese][2]が指定されています。
