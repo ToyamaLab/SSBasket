@@ -101,7 +101,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     - -f: ファイル指定
     - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
     
-    3.2 その他のDBMS
+   3.2 その他のDBMS
 
     SSBasketでは拡張子が`.ssql`のSuperSQLクエリも実行できます。
     
