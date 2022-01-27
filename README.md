@@ -120,7 +120,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     ```
     `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
 
-　　 SPARQLエンドポイントはデフォルトでDBPedia Japanese[2][3]が指定されています。
+　　 [SPARQLエンドポイント][3]はデフォルトで[DBPedia Japanese][2]が指定されています。
 
     SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
