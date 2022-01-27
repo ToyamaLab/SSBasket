@@ -94,13 +94,8 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     $ ssb -f test.ssb
     ```
     
-    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
-
-    - -v, --version, -version: バージョン表示
-    - -debug: デバッグコードの出力
-    - -f: ファイル指定
-    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
-    
+    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。
+      
    3.2 その他のDBMS
 
     SSBasketでは拡張子が`.ssql`のSuperSQLクエリも実行できます。
@@ -111,11 +106,11 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
    以下`$HOME`にインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
    
-    ```
-    $ createdb <db_name>
-    $ cd SSBasket/test_queries/config_file_test_DB
-    $ psql -d <db_name> -f test.sql
-    ```
+   ```
+   $ createdb <db_name>
+   $ cd SSBasket/test_queries/config_file_test_DB
+   $ psql -d <db_name> -f test.sql
+   ```
 
    これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
    
@@ -142,12 +137,15 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
    $ cd ~/SSBasket/ssb_query
    $ ssb -f test.ssb
    ```
-   このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
+   このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。
+   
+   3.3 ssbコマンドのオプション
+    ssbコマンドのオプションは主なものが以下です。
 
-   - -v, --version, -version: バージョン表示
-   - -debug: デバッグコードの出力
-   - -f: ファイル指定
-   - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
+    - -v, --version, -version: バージョン表示
+    - -debug: デバッグコードの出力
+    - -f: ファイル指定
+    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
 
 [1]:http://ssql.db.ics.keio.ac.jp/
 [2]:http://ja.dbpedia.org/sparql
