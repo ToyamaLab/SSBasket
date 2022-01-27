@@ -2,7 +2,7 @@
 SSeditの詳細は[こちら][4]をご覧ください。
 SSedit_for_SSBasketはSSBasketのビルドが済んだ環境で使用されることを前提としています。
 
-## SuperSQLクエリエディタであるSSeditをSSBasketでも利用できるようにしました。(β版)
+
 
 # SSBasketとは
 SuperSQLを拡張し、Linked Open Data(LOD)の探索を可能としたシステムです。
