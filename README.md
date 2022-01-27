@@ -59,10 +59,12 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     が実行できたら無事初期設定は終了しています。
 
 3. テストクエリの実行
+   
+   利用状況に応じて、3.1 あるいは 3.2 を実施してください。
 
    3.1 SQLite 
 
-    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください
+    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
     ```
     $ createdb <db_name>
     $ cd SSBasket/test_queries/config_file_test_DB
