@@ -1,7 +1,7 @@
 # SSBasketとは
 SuperSQLを拡張し、Linked Open Data(LOD)の探索を可能としたシステムです。
 
-SuperSQLのWHERE句に記述したSPARQLクエリによってLinked Open Data(LOD)を探索し、結果をHTML出力します。
+SuperSQLのWHERE句に記述したSPARQLクエリによってLODを探索し、結果をHTML出力します。
 
 連鎖的なデータであるSPARQL問い合わせ結果をSuperSQLのレイアウト力を活かし、入れ子構造で表示します。
 更に、取得結果を新たな入力としてデータ探索を行い、再帰的なデータの動的表示を実現します。
