@@ -143,10 +143,10 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
    
    ssbコマンドのオプションは主なものが以下です。
 
-     - -v, --version, -version: バージョン表示
-     - -debug: デバッグコードの出力
-     - -f: ファイル指定
-     - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
+- -v, --version, -version: バージョン表示
+- -debug: デバッグコードの出力
+- -f: ファイル指定
+- -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
 
 [1]:http://ssql.db.ics.keio.ac.jp/
 [2]:http://ja.dbpedia.org/sparql
