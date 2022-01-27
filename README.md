@@ -68,11 +68,11 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
    3.1 SQLite 
 
-    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+    以下`$HOME/SSBasket/SQLite3`にSQLiteのディレクトリが存在するとします。適宜読み替えを行なってください。
+    
     ```
-    $ createdb <db_name>
-    $ cd SSBasket/test_queries/config_file_test_DB
-    $ psql -d <db_name> -f test.sql
+    SQLiteを起動
+    新しいデータベース: test.db を作成
     ```
 
     これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
@@ -111,7 +111,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
    
 　　 SPARQL問い合わせ結果、CSVからの入力はdriverに設定したデータベースではなく、SQLiteを参照する仕様となります。
 
-    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+    以下`$HOME`にインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
     
     ```
     $ createdb <db_name>
