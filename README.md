@@ -102,6 +102,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
     
    3.2 その他のDBMS
+
     SSBasketでは拡張子が`.ssql`のSuperSQLクエリも実行できます。
 　　 また、現在は未対応ですが、今後、他のデータベースのデータとの結合表示の実装を考えています。これらのための設定の参考にしてください。
 　　 SPARQL問い合わせ結果、CSVからの入力はdriverに設定したデータベースではなく、SQLiteを参照する仕様となります。
@@ -125,6 +126,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     sqlite_db=<SQLiteのdb_name>
     sparql_endpoint=<sparqlendpoint>
     ```
+    
     `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
 
 　　 [SPARQLエンドポイント][3]はデフォルトで[DBPedia Japanese][2]が指定されています。
@@ -132,10 +134,12 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
     ここまで終わったらSSBasketフォルダに移動して実行をします。
+    
     ```
     $ cd ~/SSBasket/ssb_query
     $ ssb -f test.ssb
     ```
+    
     このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
 
     - -v, --version, -version: バージョン表示
