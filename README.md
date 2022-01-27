@@ -119,17 +119,17 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
    これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
    
-    ```
-    driver=postgresql
-    db=<db_name>
-    host=localhost
-    user=<user_name>
-    outdir=<home_dir | install_dir>/SSBasket/ssb_result
-    port=5432
-    sqlite_dir=<SQLiteのディレクトリのパス ex. home_dir/SSBasket/SQLite3/>
-    sqlite_db=<SQLiteのdb_name>
-    sparql_endpoint=<sparqlendpoint>
-    ```
+   ```
+   driver=postgresql
+   db=<db_name>
+   host=localhost
+   user=<user_name>
+   outdir=<home_dir | install_dir>/SSBasket/ssb_result
+   port=5432
+   sqlite_dir=<SQLiteのディレクトリのパス ex. home_dir/SSBasket/SQLite3/>
+   sqlite_db=<SQLiteのdb_name>
+   sparql_endpoint=<sparqlendpoint>
+   ```
     
    `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
 
@@ -138,16 +138,16 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
    SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
    ここまで終わったらSSBasketフォルダに移動して実行をします。
-    ```
-    $ cd ~/SSBasket/ssb_query
-    $ ssb -f test.ssb
-    ```
+   ```
+   $ cd ~/SSBasket/ssb_query
+   $ ssb -f test.ssb
+   ```
    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
 
-    - -v, --version, -version: バージョン表示
-    - -debug: デバッグコードの出力
-    - -f: ファイル指定
-    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
+   - -v, --version, -version: バージョン表示
+   - -debug: デバッグコードの出力
+   - -f: ファイル指定
+   - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
 
 [1]:http://ssql.db.ics.keio.ac.jp/
 [2]:http://ja.dbpedia.org/sparql
