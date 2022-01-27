@@ -1,3 +1,7 @@
+## SuperSQLクエリエディタであるSSeditをSSBasketでも利用できるようにしました。(β版)
+SSeditの詳細はhttps://github.com/ToyamaLab/SSedit
+## SuperSQLクエリエディタであるSSeditをSSBasketでも利用できるようにしました。(β版)
+
 # SSBasketとは
 SuperSQLを拡張し、Linked Open Data(LOD)の探索を可能としたシステムです。
 
