@@ -1,5 +1,7 @@
 ## SuperSQLクエリエディタであるSSeditをSSBasketでも利用できるようにしました。(β版)
-SSeditの詳細はhttps://github.com/ToyamaLab/SSedit
+SSeditの詳細は[こちら][4]をご覧ください。
+SSedit_for_SSBasketはSSBasketのビルドが済んだ環境で使用されることを前提としています。
+
 ## SuperSQLクエリエディタであるSSeditをSSBasketでも利用できるようにしました。(β版)
 
 # SSBasketとは
@@ -145,3 +147,4 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 [1]:http://ssql.db.ics.keio.ac.jp/
 [2]:https://ja.dbpedia.org
 [3]:http://ja.dbpedia.org/sparql
+[4]:https://github.com/ToyamaLab/SSedit
