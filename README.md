@@ -34,7 +34,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     これで初期設定が終わります。\
     `./configure`で行われるのは
     - $HOME直下にSSBasketディレクトリが生成されます。その中にクエリを入れる`ssbasket_query`ディレクトリと出力結果を保存する`ssbasket_result`、ライブラリが入る`libs`が生成されます。`ssbasket_query`内にはテストクエリとして`test.ssb`が保存されます。また`mvn package`コマンドが実行され生成されたjarがSSBasketディレクトリ直下に配置されます。
-    - $HOME直下に`config.ssb`という設定ファイルが生成されます。設定内容は以下です。
+    - $HOME直下に`config.yaml`という設定ファイルが生成されます。設定内容は以下です。
         
         - diver: DBMSの指定。postgresql, mysql, sqliteなど 
         - db: データベース名。
@@ -50,7 +50,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     
     `$ ./configure.sh --installdir <dir_path>`
     
-    で指定してください。(config.ssbは$HOMEに、ssb実行ファイルは$HOME/binに配置されます)
+    で指定してください。(config.yamlは$HOMEに、ssb実行ファイルは$HOME/binに配置されます)
 
     ここまで行なって
     
@@ -65,13 +65,15 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
    3.1 SQLite 
 
     以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+    
     ```
     $ createdb <db_name>
     $ cd SSBasket/test_queries/config_file_test_DB
     $ psql -d <db_name> -f test.sql
     ```
 
-    これでサンプルデータベスが作成されます。次に`config.ssb`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    
     ```
     driver=sqite
     db=<db_name>
@@ -81,21 +83,24 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     sqlite_dir=<SQLiteのディレクトリのパス ex. home_dir/SSBasket/SQLite3/>
     sparql_endpoint=<sparqlendpoint>
     ```
+    
     SPARQLエンドポイントはデフォルトでDBPedia Japanese[2][3]が指定されています。
 
     SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
     ここまで終わったらSSBasketフォルダに移動して実行をします。
+    
     ```
     $ cd ~/SSBasket/ssb_query
     $ ssb -f test.ssb
     ```
+    
     このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
 
     - -v, --version, -version: バージョン表示
     - -debug: デバッグコードの出力
     - -f: ファイル指定
-    - -c: コンフィグファイルの指定(指定なしで$HOME/config.ssqlを参照します)
+    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
     
    3.2 その他のDBMS
    
@@ -106,13 +111,15 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 　　 SPARQL問い合わせ結果、CSVからの入力はdriverに設定したデータベースではなく、SQLiteを参照する仕様となります。
 
     以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+    
     ```
     $ createdb <db_name>
     $ cd SSBasket/test_queries/config_file_test_DB
     $ psql -d <db_name> -f test.sql
     ```
 
-    これでサンプルデータベスが作成されます。次に`config.ssb`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    
     ```
     driver=postgresql
     db=<db_name>
@@ -142,7 +149,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     - -v, --version, -version: バージョン表示
     - -debug: デバッグコードの出力
     - -f: ファイル指定
-    - -c: コンフィグファイルの指定(指定なしで$HOME/config.ssqlを参照します)
+    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
 
 
 
