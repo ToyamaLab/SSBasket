@@ -1,6 +1,5 @@
 package supersql.codegenerator.VR;
 
-import org.apache.log4j.net.SyslogAppender;
 import org.w3c.dom.Element;
 
 import supersql.codegenerator.CodeGenerator;
@@ -39,18 +38,18 @@ public class VRG4 extends Grouper {
 		int i = -1;			// 20140526_masato
 		int j = -1;			// 20140526_masato
 		int k = 0;
-		
+
 		String margin = "10.0";
 		String timerange = "";
-		
-		if (vrEnv.decorationStartFlag.size() > 0 
-				&& ((vrEnv.decorationStartFlag.get(0) || decos.size()>0) 
+
+		if (vrEnv.decorationStartFlag.size() > 0
+				&& ((vrEnv.decorationStartFlag.get(0) || decos.size()>0)
 						&& !vrEnv.decorationEndFlag.get(0))) {
 			for (String key : decos.keySet()) {
 				String value = decos.get(key).toString();
 				//if the decoration value is an attribute, register its name to decorationProperty to process it later
-				if (!(value.startsWith("\"") && value.endsWith("\"")) 
-						&& !(value.startsWith("\'") && value.endsWith("\'")) 
+				if (!(value.startsWith("\"") && value.endsWith("\""))
+						&& !(value.startsWith("\'") && value.endsWith("\'"))
 						&& !supersql.codegenerator.CodeGenerator.isNumber(value)
 						) {
 					vrEnv.decorationProperty.get(0).add(0, key);
@@ -76,7 +75,7 @@ public class VRG4 extends Grouper {
 				VRAttribute.compflag[VRAttribute.cgcount] = 3;
 			}
 			VRAttribute.componeyflag = true;
-		}		
+		}
 		if (decos.containsKey("vr_z")) {
 			k = Integer.parseInt(decos.getStr("vr_z"));
 			retFlag = true;
@@ -95,16 +94,16 @@ public class VRG4 extends Grouper {
 //			}
 //			VRAttribute.componezflag = true;
 //		}
-			
-		
+
+
 		if (decos.containsKey("margin")) {
 			margin = decos.getStr("margin");
-		} 
-		
+		}
+
 		if (decos.containsKey("interval")) {
 			timerange = decos.getStr("interval");
 		}
-		
+
 		this.setDataList(data_info);
 
 		if(vrEnv.gLevel == 0) {
@@ -231,7 +230,7 @@ public class VRG4 extends Grouper {
 			}
 		}
 
-		if(!CodeGenerator.getMedia().equalsIgnoreCase("unity_dv")){	
+		if(!CodeGenerator.getMedia().equalsIgnoreCase("unity_dv")){
 			while (this.hasMoreItems()) {
 				//////////////////////////G22//////////////////////////
 				VRAttribute.genre = "";
@@ -307,16 +306,16 @@ public class VRG4 extends Grouper {
 				}
 
 				vrEnv.gLevel--;
-			
 
-			
+
+
 
 				VRManager.gindex.set(vrEnv.gLevel, 0);
 				if(vrEnv.gLevel == 0){
 					VRManager.nest1count++;
 				}
 
-				for(int l=0; l<VRAttribute.elearrayXML.size();l++){///n2 kotani		
+				for(int l=0; l<VRAttribute.elearrayXML.size();l++){///n2 kotani
 					vrEnv.currentNode.appendChild(VRAttribute.elearrayXML.get(l));
 				}
 				VRAttribute.elearrayXML.clear();//初期化

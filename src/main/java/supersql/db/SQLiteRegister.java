@@ -31,7 +31,7 @@ public class SQLiteRegister {
 		Connection conn;
 		GlobalEnv.setDefaultdb(GlobalEnv.getdbname());
 		GlobalEnv.setDefaultdriver(GlobalEnv.getDriverName());
-		GlobalEnv.setdb("test.db");
+		GlobalEnv.setdb(GlobalEnv.getSQLitedb());
 		GlobalEnv.setdriver("sqlite3");
 //		System.out.println("Defaultdb: "+GlobalEnv.getDefaultdb());
 //		System.out.println("Defaultdriver: "+GlobalEnv.getDefaultdriver());
@@ -43,7 +43,9 @@ public class SQLiteRegister {
 		String user = GlobalEnv.getusername();
 		String driver = GlobalEnv.getDriver();
 		String dbms = GlobalEnv.getdbms();
-		String url = "jdbc:sqlite:"+GlobalEnv.getSQLitedb();System.out.println(url);
+		String url = GlobalEnv.geturl();
+				//"jdbc:sqlite:"+GlobalEnv.getSQLitedb();
+				//System.out.println(url);
 		String password = GlobalEnv.getpassword();
 
 		conn = DriverManager.getConnection(url);
@@ -348,7 +350,7 @@ public class SQLiteRegister {
 									if(data[i].contains("'")) {
 										String s = data[i].replaceAll("'", "''");
 											data[i] = s;
-									System.out.println(s);
+//									System.out.println(s);
 									}
 									sql.append("'"+data[i]+"'");
 									if(i<data.length-1) {

@@ -19,43 +19,46 @@ fi
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-#SuperSQL用のディレクトリ作成
-mkdir -p $INSTALLDIR/SuperSQL
+#SSBasket用のディレクトリ作成
+mkdir -p $INSTALLDIR/SSBasket
 
-#SuperSQL出力用のディレクトリ作成
-mkdir -p $INSTALLDIR/SuperSQL/ssql_result
+#SSBasket出力用のディレクトリ作成
+mkdir -p $INSTALLDIR/SSBasket/ssb_result
 
 #SuperSQLクエリ置き場の作成
-mkdir -p $INSTALLDIR/SuperSQL/ssql_query
+mkdir -p $INSTALLDIR/SSBasket/ssb_query
 
 #テストクエリの作成
-cat $SCRIPT_DIR/test_queries/DM_All_queries/Q1.ssql > $INSTALLDIR/SuperSQL/ssql_query/test.ssql
+cat $SCRIPT_DIR/test_queries/test_ssbasket_queries/test.ssb > $INSTALLDIR/SSBasket/ssb_query/test.ssb
 
-#SuperSQLのコンフィグファイルの作成
-cat << EOS > $HOME/config.ssb
+#SSBasketのコンフィグファイルの作成
+cat << EOS > $HOME/config.yaml
 driver=
 db=
 host=
 user=
-outdir=$INSTALLDIR/SuperSQL/ssql_result
+outdir=$INSTALLDIR/SSBasket/ssb_result
 port=
+sparql_endpoint=http://ja.dbpedia.org/sparql
+sqlite_dir=$INSTALLDIR/SSBasket/sqlite3/
+sqlite_db=test.db
 EOS
 
 #jarの作成
 mvn package
-cp $SCRIPT_DIR/target/newssql-1.0-jar-with-dependencies.jar $INSTALLDIR/SuperSQL/supersql.jar
+cp $SCRIPT_DIR/target/newssql-1.0-jar-with-dependencies.jar $INSTALLDIR/SSBasket/ssbasket.jar
 
 #ライブラリの移動
-mkdir -p $INSTALLDIR/SuperSQL/libs
-cp -r $SCRIPT_DIR/lib/* $INSTALLDIR/SuperSQL/libs/
+mkdir -p $INSTALLDIR/SSBasket/libs
+cp -r $SCRIPT_DIR/lib/* $INSTALLDIR/SSBasket/libs/
 
 #ssql実行ファイルの移動
 mkdir -p $HOME/bin
 cat << EOS > ./ssb.sh
 #!/bin/sh
 
-#supersql.jarの位置指定
-CLASSDIR=$INSTALLDIR/SuperSQL
+#ssbasket.jarの位置指定
+CLASSDIR=$INSTALLDIR/SSBasket
 
 EOS
 
@@ -107,13 +110,13 @@ do
 done
 
 if [ "$FLAG_version" ]; then
-	echo "java -cp $CLASSDIR/libs/*:$CLASSDIR/supersql.jar supersql.FrontEnd -v"
-	java -cp $CLASSDIR/libs/*:$CLASSDIR/supersql.jar supersql.FrontEnd -v
+	echo "java -cp $CLASSDIR/libs/*:$CLASSDIR/ssbasket.jar ssbasket.FrontEnd -v"
+	java -cp $CLASSDIR/libs/*:$CLASSDIR/ssbasket.jar ssbasket.FrontEnd -v
 	exit 0
 fi
 
 files_full=()
-#ssqlファイル指定
+#ssbasketファイル指定
 for file in ${files[@]}
 do
 	if [ ! -e $file ]; then
@@ -144,8 +147,8 @@ done
 
 for file in ${files_full[@]}
 do
-	echo "java ${VMs} -cp $CLASSDIR/libs/*:$HOME/SuperSQL/supersql.jar supersql.FrontEnd -f ${file} ${option_str}"
-	java $VMs -cp $CLASSDIR/libs/*:$CLASSDIR/supersql.jar supersql.FrontEnd -f $file $option_str
+	echo "java ${VMs} -cp $CLASSDIR/libs/*:$HOME/SSBasket/ssbasket.jar ssbasket./FrontEnd -f ${file} ${option_str}"
+	java $VMs -cp $CLASSDIR/libs/*:$CLASSDIR/ssbasket.jar supersql.FrontEnd -f $file $option_str
 done
 EOS
 mv ssb.sh $HOME/bin/ssb

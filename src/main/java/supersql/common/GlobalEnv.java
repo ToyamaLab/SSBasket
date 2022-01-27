@@ -376,11 +376,12 @@ public class GlobalEnv {
 			}
 			if(c_value[20] != null) {
 				sqlitedir = c_value[20];
-			}else {
-				sqlitedir =getfileparent() + "/sqlite3/";
 			}
 			if(c_value[21] != null) {
 				sqlitedb = c_value[21];
+			}else {
+				if(driver.equals("sqlite") || driver.equals("sqlite3"))
+					sqlitedb = db;
 			}
 		} catch (Exception ex) {
 		}
@@ -641,10 +642,13 @@ public class GlobalEnv {
 				ret = "jdbc:db2:" + db;
 				//added by goto 20120518 start
 			}else if (driver.equals("sqlite") || driver.equals("sqlite3")) {
-				//				ret = "jdbc:sqlite:" + db;
+				// ret = "jdbc:sqlite:" + db;
 				//added by goto 20141130 start
 				//ret = "jdbc:sqlite:";
-				ret = "jdbc:sqlite:" + sqlitedir;
+				if(sqlitedir!=null)
+					ret = "jdbc:sqlite:" + sqlitedir;
+				else
+					ret = "jdbc:sqlite:" + getfileparent() + "/sqlite3/";
 				//if (!new File(db).isAbsolute()) {
 				//	if(GlobalEnv.getoutdirectory() != null)
 				//	ret += GlobalEnv.getoutdirectory();
@@ -652,7 +656,7 @@ public class GlobalEnv {
 				//	ret += GlobalEnv.getfileparent();
 				//	ret += GlobalEnv.OS_FS;
 				//}
-				ret += db;
+				ret += sqlitedb;
 				//added by goto 20141130 end
 			}else if (driver.equals("hive")){
 				ret = "jdbc:hive2://" + host + ":10000/" + db;
@@ -1189,7 +1193,7 @@ public class GlobalEnv {
 	public static boolean isLogger() {
 		//Default: off
 		if(seek("-logger") != null && seek("-logger").equalsIgnoreCase("on"))
-		return true;
+			return true;
 		return false;
 	}
 

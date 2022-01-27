@@ -4,7 +4,7 @@ SuperSQLを拡張し、Linked Open Data(LOD)の探索を可能としたシステ
 SuperSQLのWHERE句に記述したSPARQLクエリによってLinked Open Data(LOD)を探索し、結果をHTML出力します。
 
 連鎖的なデータであるSPARQL問い合わせ結果をSuperSQLのレイアウト力を活かし、入れ子構造で表示します。
-更に、取得結果を新たな入力としてデータ探索を行い、再帰的なデータの動的表示を実現します。
+更に、取得結果を新たな入力としてデータ探索を行い、再帰的なデータの動的に表示することができます。
 
 
 # SuperSQLとは
@@ -33,14 +33,14 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     ```
     これで初期設定が終わります。\
     `./configure`で行われるのは
-    - $HOME直下にSuperSQLディレクトリが生成されます。その中にクエリを入れる`ssql_query`ディレクトリと出力結果を保存する`ssql_result`、ライブラリが入る`libs`が生成されます。`ssql_query`内にはテストクエリとして`test.ssql`が保存されます。また`mvn package`コマンドが実行され生成されたjarがSuperSQLディレクトリ直下に配置されます。
+    - $HOME直下にSSBasketディレクトリが生成されます。その中にクエリを入れる`ssbasket_query`ディレクトリと出力結果を保存する`ssbasket_result`、ライブラリが入る`libs`が生成されます。`ssbasket_query`内にはテストクエリとして`test.ssb`が保存されます。また`mvn package`コマンドが実行され生成されたjarがSSBasketディレクトリ直下に配置されます。
     - $HOME直下に`config.ssb`という設定ファイルが生成されます。設定内容は以下です。
         
         - diver: DBMSの指定。postgresql, mysql, sqliteなど 
         - db: データベース名。
         - host: データベースが動いているホスト。
         - user: データベースユーザ名。
-        - outdir: 実行結果の保存場所。初期値は`$HOME/SuperSQL/ssql_result`
+        - outdir: 実行結果の保存場所。初期値は`$HOME/SuperSQL/ssb_result`
         - port: ポート。初期値は5432。
         - password: データベースのパスワード。
 
@@ -59,7 +59,8 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     が実行できたら無事初期設定は終了しています。
 
 3. テストクエリの実行
-    
+   3.1 SQLite 
+
     以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください
     ```
     $ createdb <db_name>
@@ -67,21 +68,68 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     $ psql -d <db_name> -f test.sql
     ```
 
-    これでサンプルデータベスが作成されます。次に`config.ssql`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    これでサンプルデータベスが作成されます。次に`config.ssb`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    ```
+    driver=SQLite
+    db=<db_name>
+    host=localhost
+    user=<user_name>
+    outdir=<home_dir | install_dir>/SSBasket/ssb_result
+    sqlite_dir=<SQLiteのディレクトリのパス ex. home_dir/SSBasket/SQLite3/>
+    sparql_endpoint=<sparqlendpoint>
+    ```
+    SPARQLエンドポイントはデフォルトでDBPedia Japanese[2][3]が指定されています。
+
+    SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
+
+    ここまで終わったらSSBasketフォルダに移動して実行をします。
+    ```
+    $ cd ~/SSBasket/ssb_query
+    $ ssb -f test.ssb
+    ```
+    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
+
+    - -v, --version, -version: バージョン表示
+    - -debug: デバッグコードの出力
+    - -f: ファイル指定
+    - -c: コンフィグファイルの指定(指定なしで$HOME/config.ssqlを参照します)
+    
+   3.2 その他のDBMS
+    SSBasketでは拡張子が`.ssql`のSuperSQLクエリも実行できます。
+　　 また、現在は未対応ですが、今後、他のデータベースのデータとの結合表示の実装を考えています。これらのための設定の参考にしてください。
+　　 SPARQL問い合わせ結果、CSVからの入力はdriverに設定したデータベースではなく、SQLiteを参照する仕様となります。
+
+    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+    ```
+    $ createdb <db_name>
+    $ cd SSBasket/test_queries/config_file_test_DB
+    $ psql -d <db_name> -f test.sql
+    ```
+
+    これでサンプルデータベスが作成されます。次に`config.ssb`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
     ```
     driver=postgresql
     db=<db_name>
     host=localhost
     user=<user_name>
-    outdir=<home_dir | install_dir>/SuperSQL/ssql_result
+    outdir=<home_dir | install_dir>/SSBasket/ssb_result
     port=5432
+    sqlite_dir=<SQLiteのディレクトリのパス ex. home_dir/SSBasket/SQLite3/>
+    sqlite_db=<SQLiteのdb_name>
+    sparql_endpoint=<sparqlendpoint>
     ```
-    ここまで終わったらSuperSQLフォルダに移動して実行をします。
+    `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
+
+　　 SPARQLエンドポイントはデフォルトでDBPedia Japanese[2][3]が指定されています。
+
+    SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
+
+    ここまで終わったらSSBasketフォルダに移動して実行をします。
     ```
-    $ cd ~/SuperSQL/ssql_query
-    $ ssql -f test.ssql
+    $ cd ~/SSBasket/ssb_query
+    $ ssb -f test.ssb
     ```
-    このクエリはHTMLを生成するのでssql_resultフォルダにあるtest.htmlをブラウザで確認してください。ssqlコマンドのオプションは主なものが以下です。
+    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
 
     - -v, --version, -version: バージョン表示
     - -debug: デバッグコードの出力
@@ -91,3 +139,5 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
 
 [1]:http://ssql.db.ics.keio.ac.jp/
+[2]:https://www.ja.dbpedia.org/
+[3]:http://ja.dbpedia.org/sparql

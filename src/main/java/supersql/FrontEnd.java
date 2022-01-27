@@ -122,7 +122,7 @@ public class FrontEnd {
 //				Log.info("2-2-2");
 				GlobalEnv.beforedc = System.currentTimeMillis();
 				DataConstructor dc = new DataConstructor(parser);
-				GlobalEnv.afterdc2 = System.currentTimeMillis();
+//				GlobalEnv.afterdc2 = System.currentTimeMillis();
 //				Log.info("MakeSch time : " + (GlobalEnv.afterMakeSch - GlobalEnv.beforedc) + "ms");
 //				Log.info("MakeSQL time : " + (GlobalEnv.afterMakeSQL - GlobalEnv.beforeMakeSQL) + "ms");
 //				Log.info("GetFromDB time : " + (GlobalEnv.afterGetFromDB - GlobalEnv.beforeGetFromDB) + "ms");
@@ -158,7 +158,7 @@ public class FrontEnd {
 		GlobalEnv.queryInfo += GlobalEnv.getusername() + " | " + GlobalEnv.queryName +  " | ";
 		if (GlobalEnv.getErrFlag() == 0){
 			Ssedit.sseditInfo();
-			Log.info("// completed normally //");
+			Log.info("// hop0 completed normally //");
 			LogInfo.logInfo(true);
 		} else {
 			LogError.logErr();

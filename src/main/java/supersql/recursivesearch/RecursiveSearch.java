@@ -204,7 +204,8 @@ public class RecursiveSearch {
 	            +"PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>"
 	    		+"PREFIX dbp-owl: <http://dbpedia.org/ontology/>"
 	            +"PREFIX dbpj-prop: <http://ja.dbpedia.org/property/>"
-	    		+selectwhere;System.out.println(queryString);
+	    		+selectwhere;
+		//System.out.println(queryString);
 		Query query = QueryFactory.create(queryString);
 	    QueryExecution qe = QueryExecutionFactory.sparqlService(service, query);
 	    ResultSet results = qe.execSelect();

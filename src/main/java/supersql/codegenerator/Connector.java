@@ -121,7 +121,11 @@ public class Connector extends Operator implements Serializable{
 	public String worknextItem() {
 		ITFE tfe = (ITFE) tfes.get(sindex);
 		int ci = tfe.countconnectitem();
-		ExtList subdata = data.ExtsubList(dindex, dindex + ci);
+		ExtList subdata;
+//		if(dindex + ci>data.size())
+//			 subdata= data.ExtsubList(dindex, data.size());
+//		else
+			subdata = data.ExtsubList(dindex, dindex + ci);
 		String string = new String();
 		if (tfe instanceof Connector || tfe instanceof Attribute
 				|| tfe instanceof Function || tfe instanceof IfCondition || tfe instanceof Decorator) {
@@ -131,13 +135,20 @@ public class Connector extends Operator implements Serializable{
 //				subdata = Mobile_HTML5.dynamicConnectorProcess(tfe, subdata);
 //			}
 			string = tfe.work(subdata);
-
+			sindex++;
+			dindex += ci;
 		}
 		else {
+//			if(subdata.get(0) instanceof ExtList) { //changed ayumi
 			string = tfe.work((ExtList) subdata.get(0));
+			sindex++;
+			dindex += ci;
+//			}else {
+//				string = (String) subdata.get(0);
+//			}
 		}
-		sindex++;
-		dindex += ci;
+//		sindex++;
+//		dindex += ci;
 		if(GlobalEnv.joinFlag){
 			return string;
 		}

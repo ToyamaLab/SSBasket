@@ -24,7 +24,9 @@ public class CsvRegister {
 
 	public static void copytoDB(String input) throws Exception {
 //		System.out.println("csv register");
-		Connection conn;
+		SQLiteRegister.copytoDB(input);
+//if you want to use localdb instead of sqlite, please remove comment out and comment out "SQLiteRegister.copytoDB(input);".
+/*		Connection conn;
 		String hostname = GlobalEnv.gethost();
 		String port = GlobalEnv.getport();
 		String dbname = GlobalEnv.getdbname();
@@ -33,8 +35,7 @@ public class CsvRegister {
 		String dbms = GlobalEnv.getdbms();
 		String url = GlobalEnv.geturl();
 		String password = GlobalEnv.getpassword();
-		SQLiteRegister.copytoDB(input);
-/*		conn = DriverManager.getConnection(url, user, password);
+ 		conn = DriverManager.getConnection(url, user, password);
 		long result = 0;
 		nowfile = null;
 		nowtable = input;

@@ -34,7 +34,6 @@ import supersql.db.CsvRegister;
 import supersql.db.GetFromDB;
 import supersql.extendclass.ExtList;
 import supersql.parser.org.antlr.v4.runtime.MyErrorStrategy;
-import supersql.recursivesearch.RecursiveParent;
 
 
 public class Start_Parse {
@@ -84,24 +83,23 @@ public class Start_Parse {
 	public static HashMap<String, String> alias_name;
 
 	//add ayumi
-	public static int hopCount=3;
-//	public static String ssqlquery = new String();
+
+	public static int hopCount=0;
 	public static String recursiveSPARQLQuery = "SELECT ?v1 ?o1 \nWHERE\n{\n dbpj:<input> ?v1 ?o1 .\n}\nLIMIT 300";
 	public static String recursiveExpression = new String();
-	public static RecursiveParent parent = new RecursiveParent();
+	public static boolean sparqlFlg = false;
+	public static boolean addcsvmode = true;
+	public static ArrayList<String> addedcsv = new ArrayList<String>();
 	public static ExtList beforerecursivetitletree = new ExtList();
 	public static int[] beforeintcountlist;
 	public static int hopFlg = 0;
-	public static boolean addcsvmode = true;
-	public static ArrayList<String> addedcsv = new ArrayList<String>();
+	public static String[] hop0name;
 	public static boolean originflg = true;
 	public static String origin_s = new String();
 	public static String origin_v = new String();
 	public static String origin_o = new String();
-	public static boolean sparqlFlg = false;
 	public static int renum = 0;
 	public static int imediatecsvcount = 0;
-	public static String[] hop0name;
 
 	public Start_Parse() {
 		parseSSBasket(this.getSSQLQuery(), 10000);
@@ -698,7 +696,7 @@ public class Start_Parse {
 				boolean bo = Pattern.matches("ssbasket\\([0-9]+\\)", b.trim().toLowerCase());
 				if(bo) {
 					String s = b.substring(b.indexOf("(")+1, b.indexOf(")"));
-					hopCount = Integer.parseInt(s);
+					Start_Parse.hopCount = Integer.parseInt(s);
 				}
 	//			if(c_1!=null) {
 	//				ssqlquery = c_1.trim();
@@ -710,7 +708,7 @@ public class Start_Parse {
 					recursiveExpression = c_3.trim();
 				}
 				sparqlFlg = true;
-				System.out.println("------hop_count------\n" +hopCount+"\n");
+				System.out.println("------hop_count------\n" +Start_Parse.hopCount+"\n");
 				System.out.println("------SSQL------\n"+c_1+"\n");
 				System.out.println("------RE_SPARQL------\n"+recursiveSPARQLQuery+"\n");
 				System.out.println("------RE_Expression------\n"+recursiveExpression+"\n");

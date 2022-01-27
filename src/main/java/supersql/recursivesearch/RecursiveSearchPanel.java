@@ -21,7 +21,6 @@ import supersql.parser.Start_Parse;
 
 public class RecursiveSearchPanel extends JFrame implements ActionListener{
 	protected JPanel panel;
-//	protected static JList jlist;
 	JTextArea hopcount;
 	JTextArea query;
 	JTextArea expression;
@@ -78,22 +77,13 @@ public class RecursiveSearchPanel extends JFrame implements ActionListener{
 
 		query = new JTextArea(300, 150);
 		query.append(Start_Parse.recursiveSPARQLQuery);
-//		query.append("SELECT ?v1 ?o1 ?s2 ?v2 \nWHERE\n{\n  {\n  dbpj:<input>  ?v1 ?o1 .\n  }\nUNION\n  {\n  ?s2 ?v2 dbpj:<input> .\n  }\n}\nLIMIT 300");
 		sp2 = new JScrollPane(query);
 		sp2.setPreferredSize(new Dimension(300, 150));
-//		sp2.setVisible(false);
 
 		expression = new JTextArea(300, 100);
 		expression.append(Start_Parse.recursiveExpression);
 		sp3 = new JScrollPane(expression);
 		sp3.setPreferredSize(new Dimension(300, 100));
-
-//		jlist = new JList(selection.toArray());
-//		jlist.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//		sp = new JScrollPane();
-//		sp.getViewport().setView(jlist);
-//		sp.setPreferredSize(new Dimension(500, 200));
-
 
 		selectbutton = new JButton("Search");
 		selectbutton.addActionListener(this);
@@ -107,12 +97,6 @@ public class RecursiveSearchPanel extends JFrame implements ActionListener{
 		minushopbutton.addActionListener(this);
 		minushopbutton.setActionCommand("minushop");
 
-//		JButton querybutton = new JButton("Query Visible");
-//		querybutton.addActionListener(this);
-//		querybutton.setActionCommand("querybutton");
-
-//		panel.add(label);
-//		panel.add(sp);
 		panel.add(label1);
 		sp.add(sp1);
 		sp.add(plushopbutton);
@@ -122,7 +106,6 @@ public class RecursiveSearchPanel extends JFrame implements ActionListener{
 		panel.add(sp2);
 		panel.add(label3);
 		panel.add(sp3);
-//		panel.add(querybutton);
 		panel.add(selectbutton);
 
 		Container contentPane = getContentPane();
@@ -132,63 +115,54 @@ public class RecursiveSearchPanel extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
 
-//		StringBuffer sb = new StringBuffer();
-
 		if(actionCommand.equals("selectbutton")){
-//			if(!jlist.isSelectionEmpty()) {
-//				Object[] vals = jlist.getSelectedValues();
-//				sb.append(vals[0]);
-				if(hopcount.getText().matches("[0-9]+")) {
-					if(Integer.parseInt(hopcount.getText())>=Start_Parse.hopCount){
-						Start_Parse.hopFlg = 1;
-						GlobalEnv.setRecursiveNum(Start_Parse.hopCount+1);
-						System.out.println(GlobalEnv.getRecursiveNum());
-					}else {
-						Start_Parse.hopFlg = 0;
-						GlobalEnv.setRecursiveNum(1);
-					}
-					RecursiveSearch.setHopCount(Integer.parseInt(hopcount.getText()));
+			if(hopcount.getText().matches("[0-9]+")) {
+				if(Integer.parseInt(hopcount.getText())>=Start_Parse.hopCount){
+					Start_Parse.hopFlg = 1;
+					GlobalEnv.setRecursiveNum(Start_Parse.hopCount+1);
+					System.out.println(GlobalEnv.getRecursiveNum());
+				}else {
+					Start_Parse.hopFlg = 0;
+					GlobalEnv.setRecursiveNum(1);
 				}
-				if(query !=null) {
-				//	RecursiveSearch.RecursiveSearch(sb.toString(), query.getText());
-//					System.out.println("\n--recursive query is --");
-//					System.out.println(sb.toString()+" \n"+query.getText());
+
+			}
+			if(query !=null) {
+			//	RecursiveSearch.RecursiveSearch(sb.toString(), query.getText());
+//				System.out.println("\n--recursive query is --");
+//				System.out.println(sb.toString()+" \n"+query.getText());
+				if(query.getText().trim().equals(Start_Parse.recursiveSPARQLQuery.trim())) {
+					Start_Parse.hopFlg = 0;
+					GlobalEnv.setRecursiveNum(1);
+				}else {
 					RecursiveSearch.setRecursiveSPARQLQuery(query.getText());
-	//				RecursiveSearch.RecursiveSearch(vals, query.getText());
 				}
-				if(expression !=null) {
+//				RecursiveSearch.RecursiveSearch(vals, query.getText());
+			}
+			if(expression !=null) {
+				if(expression.getText().trim().equals(Start_Parse.recursiveExpression.trim())) {
+					Start_Parse.hopFlg = 0;
+					GlobalEnv.setRecursiveNum(1);
+				}else {
 					RecursiveSearch.setRecursiveExpression(expression.getText());
 				}
-					this.dispose();
-					Start_Parse.beforerecursivetitletree = RecursiveSearch.recursivefiletree;
-					Start_Parse.beforeintcountlist = RecursiveSearch.intcountlist;
-					Start_Parse.addcsvmode = false;
-					RecursiveSearch.RecursiveSearch();
-			//		System.exit(-1);
-					panel.setVisible(false);
+			}
 
-//			} else {
-//				return;
-//			}
+			RecursiveSearch.setHopCount(Integer.parseInt(hopcount.getText()));
+			Start_Parse.beforerecursivetitletree = RecursiveSearch.recursivefiletree;
+			Start_Parse.beforeintcountlist = RecursiveSearch.intcountlist;
+			Start_Parse.addcsvmode = false;
+			panel.setVisible(false);
+			RecursiveSearch.RecursiveSearch();
+//			System.exit(-1);
+			this.dispose();
+
 		}else if(actionCommand.equals("plushop")) {
 			hopcount.setText(String.valueOf(Integer.parseInt(hopcount.getText())+1));
 			validate();
 		}else if (actionCommand.equals("minushop")) {
 			hopcount.setText(String.valueOf(Integer.parseInt(hopcount.getText())-1));
 			validate();
-//		}else if(actionCommand.equals("querybutton")){
-//			if(sp2.isVisible()==false) {
-//			//	query.setVisible(true);
-//				sp2.setVisible(true);
-//				validate();
-//				return;
-//			}else if(sp2.isVisible()==true) {
-//			//	query.setVisible(false);
-//				sp2.setVisible(false);
-//				validate();
-//				return;
-//			}
-
 		}
 
 	}

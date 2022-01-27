@@ -518,7 +518,7 @@ public class DataConstructor {
 			start = System.nanoTime();
 			Log.info("I'm in not msql ");
 			sep_data_info = MakeTree(qd.getSchema());
-			 System.out.println(sep_data_info);
+//			 System.out.println(sep_data_info);
 			end = System.nanoTime();
 
 			exectime[MKETREE] = end - start;
@@ -1054,9 +1054,10 @@ public class DataConstructor {
 			for (int k = 0; k < qb1.getResult().size(); k++) {
 //						System.out.println("qb:"+qb.getResult().get(k));
 				boolean differentFlag = false;
+//				boolean differentFlag = true;
 				for (int l = 0; l < sameAttNum.size(); l++) {
-					System.out.println("aa "+((ExtList)compResult.get(j)).get(compSchf.indexOf(sameAttNum.get(l))).toString());
-					System.out.println("bb "+((ExtList)qb1.getResult().get(k)).get(qb1.getSchf().indexOf(sameAttNum.get(l))).toString());
+//					System.out.println("aa "+((ExtList)compResult.get(j)).get(compSchf.indexOf(sameAttNum.get(l))).toString());
+//					System.out.println("bb "+((ExtList)qb1.getResult().get(k)).get(qb1.getSchf().indexOf(sameAttNum.get(l))).toString());
 					if(!((ExtList)compResult.get(j)).get(compSchf.indexOf(sameAttNum.get(l))).toString().equals(((ExtList)qb1.getResult().get(k)).get(qb1.getSchf().indexOf(sameAttNum.get(l))).toString())){
 						differentFlag = true;
 						break;
@@ -1090,14 +1091,14 @@ public class DataConstructor {
 					}
 							//入れ方考えないと
 							//tmpResultを溜め込んで後で全部やったら更新
-//								System.out.println("Synth:"+synthesizedResult);
-//								System.out.println("tmpResult:"+tmpResult);
-//								System.out.println("attL:"+attributeList);
-//								System.out.println("tmpS:"+tmpSchf);
+							//	System.out.println("Synth:"+synthesizedResult);
+							//	System.out.println("tmpResult:"+tmpResult);
+							//	System.out.println("attL:"+attributeList);
+							//	System.out.println("tmpS:"+tmpSchf);
 					tmpResultSet.add(tmpResult);
 				}
 			}
-//						System.out.println("tmpResultSet:"+tmpResultSet);
+					//	System.out.println("tmpResultSet:"+tmpResultSet);
 		}
 		retQB.setResult(tmpResultSet);
 		return retQB;

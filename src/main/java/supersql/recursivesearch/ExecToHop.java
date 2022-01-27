@@ -32,7 +32,7 @@ public class ExecToHop {
 			if(GlobalEnv.getfilename().substring(0,GlobalEnv.getfilename().indexOf(".ss")).matches(".*(_sparqlresult[0-9]+)$")){
 				file = GlobalEnv.getfilename().substring(0,GlobalEnv.getfilename().indexOf("_sparqlresult")+13) + String.valueOf(Start_Parse.renum)+".ssb";
 			}else {
-			file = GlobalEnv.getfilename().substring(0,GlobalEnv.getfilename().indexOf(".ssb")) + "_sparqlresult"+String.valueOf(Start_Parse.renum)+".ssb";
+			file = GlobalEnv.getfilename().substring(0,GlobalEnv.getfilename().indexOf(".ss")) + "_sparqlresult"+String.valueOf(Start_Parse.renum)+".ssb";
 			}
 			Start_Parse.renum++;
 			FileWriter fw = new FileWriter(file);
@@ -117,7 +117,7 @@ public class ExecToHop {
 		GlobalEnv.queryInfo += GlobalEnv.getusername() + " | " + GlobalEnv.queryName +  " | ";
 		if (GlobalEnv.getErrFlag() == 0){
 			Ssedit.sseditInfo();
-			Log.info("// completed normally //");
+			Log.info("// next hop completed normally //");
 			LogInfo.logInfo(true);
 		} else {
 			LogError.logErr();

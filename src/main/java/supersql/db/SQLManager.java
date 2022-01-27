@@ -285,7 +285,7 @@ public class SQLManager {
 						val = rs.getObject(i).toString();
 						if(Start_Parse.sparqlFlg == true) {
 	//						if(val.matches(".*\\.^[.]*")) {
-								tmp.append(val);System.out.println(val);
+								tmp.append(val);
 	//							System.out.println(tmp.toString());
 	//						}else {
 	//							val = "";

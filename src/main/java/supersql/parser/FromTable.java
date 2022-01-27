@@ -93,7 +93,7 @@ public class FromTable {
                     	//SPARQL(SPARQLクエリ)
                     	}else if(tableName.substring(1,7).equalsIgnoreCase("sparql")) {
                     		String sparqlquery = tableName.substring(tableName.indexOf("(") + 1,tableName.lastIndexOf(")"));
-                    		System.out.println("sparqlquery: \n"+sparqlquery);
+//                    		System.out.println("sparqlquery: \n"+sparqlquery);
                         	SPARQLManager.GetResult(sparqlquery);
                         	tableName = "sparqlresult"+GlobalEnv.outputcsvNum+"_"+GlobalEnv.outputcsvNum;
             				line = tableName + " " + alias;
