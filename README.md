@@ -64,7 +64,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
    3.1 SQLite 
 
-    以下$HOME/SSBasket/SQLiteにSQLiteのディレクトリが存在するとします。適宜読み替えを行なってください。
+    以下`$HOME/SSBasket/SQLite3`にSQLiteのディレクトリが存在するとします。適宜読み替えを行なってください。
     
     ```
     SQLiteを起動
@@ -126,7 +126,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     user=<user_name>
     outdir=<home_dir | install_dir>/SSBasket/ssb_result
     port=5432
-    sqlite_dir=<SQLiteのディレクトリのパス ex. home_dir/SSBasket/SQLite3/>
+    sqlite_dir=<SQLiteのディレクトリのパス ex. $HOME/SSBasket/SQLite3/>
     sqlite_db=<SQLiteのdb_name>
     sparql_endpoint=<sparqlendpoint>
     ```
