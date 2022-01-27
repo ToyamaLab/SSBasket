@@ -83,7 +83,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     sparql_endpoint=<sparqlendpoint>
     ```
     
-    SPARQLエンドポイントはデフォルトでDBPedia Japanese[2][3]が指定されています。
+    [SPARQLエンドポイント][2]はデフォルトで[DBPedia Japanese][3]が指定されています。
 
     SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
@@ -154,5 +154,5 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
 
 [1]:http://ssql.db.ics.keio.ac.jp/
-[2]:https://ja.dbpedia.org
-[3]:http://ja.dbpedia.org/sparql
+[2]:http://ja.dbpedia.org/sparql
+[3]:https://ja.dbpedia.org
