@@ -1,7 +1,7 @@
 # SSBasketとは
 SuperSQLを拡張し、Linked Open Data(LOD)の探索を可能としたシステムです。
 
-SuperSQLのWHERE句に記述したSPARQLクエリによってLinked Open Data(LOD)を探索し、結果をHTML出力します。
+SuperSQLのWHERE句に記述したSPARQLクエリによってLODを探索し、結果をHTML出力します。
 
 連鎖的なデータであるSPARQL問い合わせ結果をSuperSQLのレイアウト力を活かし、入れ子構造で表示します。
 更に、取得結果を新たな入力としてデータ探索を行い、再帰的なデータの動的に表示することができます。
@@ -64,12 +64,11 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
    3.1 SQLite 
 
-    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+    以下$HOME/SSBasket/SQLiteにSQLiteのディレクトリが存在するとします。適宜読み替えを行なってください。
     
     ```
-    $ createdb <db_name>
-    $ cd SSBasket/test_queries/config_file_test_DB
-    $ psql -d <db_name> -f test.sql
+    SQLiteを起動
+    新しいデータベース: test.db を作成
     ```
 
     これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
@@ -109,9 +108,8 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 　　 また、現在は未対応ですが、今後、他のデータベースのデータとの結合表示の実装を考えています。これらのための設定の参考にしてください。
    
 　　 SPARQL問い合わせ結果、CSVからの入力は`driver`に設定したデータベースではなく、SQLiteを参照する仕様となります。
-
-    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
     
+    以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
     
     ```
     $ createdb <db_name>
