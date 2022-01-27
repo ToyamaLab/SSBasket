@@ -114,7 +114,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     $ psql -d <db_name> -f test.sql
     ```
 
-    これでサンプルデータベスが作成されます。次に`config.ssb`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+    これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
     ```
     driver=postgresql
     db=<db_name>
@@ -129,7 +129,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     
     `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
 
-　　 [SPARQLエンドポイント][3]はデフォルトで[DBPedia Japanese][2]が指定されています。
+　　 [SPARQLエンドポイント][2]はデフォルトで[DBPedia Japanese][3]が指定されています。
 
     SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
@@ -145,7 +145,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     - -v, --version, -version: バージョン表示
     - -debug: デバッグコードの出力
     - -f: ファイル指定
-    - -c: コンフィグファイルの指定(指定なしで$HOME/config.ssqlを参照します)
+    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
 
 [1]:http://ssql.db.ics.keio.ac.jp/
 [2]:http://ja.dbpedia.org/sparql
