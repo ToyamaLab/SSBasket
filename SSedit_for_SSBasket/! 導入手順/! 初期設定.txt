@@ -1,0 +1,47 @@
+###################################
+#
+# SSeditの初期設定  goto 2021/3/24
+#
+###################################
+SSeditの初回クエリ実行前に以下を行ってください。 
+
+1. Javaのインストール
+　1-1. 以下からJava8以上をDLしてインストール
+　　　　https://www.java.com/ja/download/help/windows_manual_download.html
+
+2. Rの導入 (ggplot関数を使用する場合)
+ 【Mac】
+　　2-1. 以下から「R-3.6.3.nn.pkg」をDLしてインストール (他バージョンは挙動未確認)
+　　　　　https://cran.r-project.org/bin/macosx/
+　　2-2. 必要なパッケージのインストール			#TODO スクリプト作成済みだがまだ挙動未確認
+　　　　　ターミナルで以下のコマンドを実行
+　　　　　　R CMD javareconf
+　　　　　　R
+　　　　　　install.packages('rJava')			#JavaからRの実行用
+　　　　　　	任意のミラーサイトを選択
+　　　　　　install.packages('tidyverse')		#ggplotを含むパッケージ
+　　　　　　　任意のミラーサイトを選択
+　　　　　　install.packages("plotly")		#HTML生成用
+　　　　　　　任意のミラーサイトを選択
+　　　　　　q()
+　　2-3. Rがインストールされたディレクトリのパスを取得し、SSeditの[設定]タブへ
+　　　　　ターミナルで以下のコマンドを実行			#TODO スクリプト作成済みだがまだ挙動未確認
+　　　　　　R
+　　　　　　R.Home()　　← この実行結果のパスをコピー
+　　　　　SSeditを起動し、[設定]タブの「Rをインストールしたフォルダのパス(ggplot関数用)」へ上記のパスを入力
+　　　　　　例: /Library/Frameworks/R.framework/Resources
+
+ 【Windows】
+　　#TODO 上記と同じように行えばできるはずだが、RDP接続不可のため動作未確認
+　
+
+
+Windows備考：
+ ・jarをダブルクリックして起動しない場合
+ 　コマンドプロンプトから以下のコマンドで起動
+ 　java -jar ssqltool5.jar
+ ・コマンドプロンプトの文字化け対策
+ 　chcp 932
+
+
+
