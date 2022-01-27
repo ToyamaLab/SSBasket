@@ -94,14 +94,9 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     $ cd ~/SSBasket/ssb_query
     $ ssb -f test.ssb
     ```
-    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
-
-    - -v, --version, -version: バージョン表示
-    - -debug: デバッグコードの出力
-    - -f: ファイル指定
-    - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
+    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。
     
-   3.2 その他のDBMS
+       3.2 その他のDBMS
 
     SSBasketでは拡張子が`.ssql`のSuperSQLクエリも実行できます。
     
@@ -146,12 +141,17 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     $ ssb -f test.ssb
     ```
     
-    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
+    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。
+
+   3.3 ssbコマンドのオプション
+    
+    ssbコマンドのオプションは主なものが以下です。
 
     - -v, --version, -version: バージョン表示
     - -debug: デバッグコードの出力
     - -f: ファイル指定
     - -c: コンフィグファイルの指定(指定なしで$HOME/config.yamlを参照します)
+    
 
 
 
