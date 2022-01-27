@@ -109,14 +109,14 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
    
 　　 SPARQL問い合わせ結果、CSVからの入力はdriverに設定したデータベースではなく、SQLiteを参照する仕様となります。
 
-    以下`$HOME`にインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
+   以下`$HOME`にインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
     ```
     $ createdb <db_name>
     $ cd SSBasket/test_queries/config_file_test_DB
     $ psql -d <db_name> -f test.sql
     ```
 
-    これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
+   これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
     ```
     driver=postgresql
     db=<db_name>
@@ -129,18 +129,18 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     sparql_endpoint=<sparqlendpoint>
     ```
     
-    `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
+   `driver`が`sqlite`のとき、`db`と`sqlite_db`が両方設定されていた場合、`sqlite_db`が優先されます。
 
 　　 [SPARQLエンドポイント][2]はデフォルトで[DBPedia Japanese][3]が指定されています。
 
-    SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
+   SPARQL PREFIXを追加したい場合`sparql_prefix=<prefix>`を追記してください。
 
-    ここまで終わったらSSBasketフォルダに移動して実行をします。
+   ここまで終わったらSSBasketフォルダに移動して実行をします。
     ```
     $ cd ~/SSBasket/ssb_query
     $ ssb -f test.ssb
     ```
-    このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
+   このクエリはHTMLを生成するのでssb_resultフォルダにあるtest.htmlをブラウザで確認してください。ssbコマンドのオプションは主なものが以下です。
 
     - -v, --version, -version: バージョン表示
     - -debug: デバッグコードの出力
