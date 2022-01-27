@@ -112,6 +112,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
 
     以下$HOMEにインストールし同マシン内でPostgreSQLが動いているとします。適宜読み替えを行なってください。
     
+    
     ```
     $ createdb <db_name>
     $ cd SSBasket/test_queries/config_file_test_DB
