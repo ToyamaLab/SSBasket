@@ -116,7 +116,7 @@ SuperSQLとは慶應義塾大学理工学部情報工学科の遠山研究室に
     $ cd SSBasket/test_queries/config_file_test_DB
     $ psql -d <db_name> -f test.sql
     ```
-
+    
     これでサンプルデータベスが作成されます。次に`config.yaml`を以下のように書き換えます。尚`<home_dir | install_dir>`に関してはパスを明示してください。
     
     ```
