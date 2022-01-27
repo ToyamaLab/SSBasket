@@ -1,3 +1,0 @@
-GENERATE HTML
-[e.id, e.name, (e.salary / 113) || ' ドル']!
-FROM employee e

@@ -1,3 +1,0 @@
-GENERATE HTML
-[e.id, e.name, e.salary]!@{div}
-from employee e

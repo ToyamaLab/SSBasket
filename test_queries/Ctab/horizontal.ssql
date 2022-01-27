@@ -1,3 +1,0 @@
-GENERATE HTML
-cross_tab([pref],, , count[id])
-FROM cov

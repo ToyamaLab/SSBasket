@@ -1,3 +1,0 @@
-GENERATE HTML
-[e.name, e.byear]!
-FROM employee e

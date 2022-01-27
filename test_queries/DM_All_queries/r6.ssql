@@ -1,4 +1,0 @@
-GENERATE HTML
-[d.name, [i.name@{color='blue', width='200'}]!]!
-FROM dept d, item i
-WHERE i.dept=d.id

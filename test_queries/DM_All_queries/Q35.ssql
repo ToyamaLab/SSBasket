@@ -1,3 +1,0 @@
-GENERATE HTML
-[e.id@{font-size=30}]!@{color='green'},avg[e.salary]@{color = 'red', font-size=100}, [e.id@{font-size=30}]!@{color='green'},avg[e.salary]@{color = 'red', font-size=100}, [e.id@{font-size=30}]!@{color='green'},avg[e.salary]@{color = 'red', font-size=100}
-FROM employee e

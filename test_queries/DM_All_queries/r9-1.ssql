@@ -1,3 +1,0 @@
-GENERATE HTML
-[link(e.name, 'r9-2.ssql', e.id)]!
-FROM employee e

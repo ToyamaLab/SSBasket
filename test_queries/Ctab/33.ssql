@@ -1,3 +1,0 @@
-GENERATE HTML
-cross_tab([store],, [name]!, sum[floor])
-from dept;

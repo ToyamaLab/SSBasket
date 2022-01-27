@@ -1,3 +1,0 @@
-Generate HTML
-[e.manager , "e"."id" || "e"."name"]!
-from employee e;

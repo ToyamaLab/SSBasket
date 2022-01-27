@@ -1,4 +1,0 @@
-GENERATE HTML
-[(asc)d.floor, d.name@{bgcolor = dc.fcolor}]!
-FROM dept d , deptcolor dc
-WHERE dc.floor = d.floor

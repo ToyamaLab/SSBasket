@@ -1,3 +1,0 @@
-GENERATE HTML
-[e.name, image(e.pict, './pict')@{width='200'}]!
-FROM employee e

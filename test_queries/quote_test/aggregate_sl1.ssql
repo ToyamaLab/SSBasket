@@ -1,3 +1,0 @@
-GENERATE HTML
-sum[st.id], 'hoge',sum[st.id], 'hoge',sum[st.id], 'hoge'
-FROM store st
